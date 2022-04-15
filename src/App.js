@@ -13,6 +13,7 @@ export default class App extends Component {
         super(props)
         this.state = {
             state_item: null,
+            base_url: 'https://kekambas-blog.herokuapp.com/',
             message: null,
             category: null,
             loggedIn: localStorage.getItem('token') ? true : false 
@@ -29,7 +30,7 @@ export default class App extends Component {
                     {this.state.message ? <AlertMessage category={this.state.category} message={this.state.message} flashMessage={this.flashMessage}/> : null}
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/allposts" element={<AllPosts />} />
+                        <Route path="/allposts" element={<AllPosts base_url={this.state.base_url} />} />
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/login" element={<Login />} />
                     </Routes>
