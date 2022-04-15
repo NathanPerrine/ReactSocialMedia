@@ -1,0 +1,29 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+export default function Nav(props) {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light border-bottom">
+        <div className="container-fluid">
+            <Link className="navbar-brand" to="/">RSM</Link>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div className="navbar-nav w-100 d-flex justify-content-between">
+                    <div className="d-flex">
+                        <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                        <Link className="nav-link" to="/allposts">All Posts</Link>
+                    </div>
+                    {/* <Link className="nav-link" to="/blog">Blog</Link> */}
+
+                    <div className="d-flex">
+                        <Link className="nav-link" to="/signup">Sign Up</Link>
+                        <Link className="nav-link" to="/login">Login</Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+  )
+}
