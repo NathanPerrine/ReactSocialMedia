@@ -21,15 +21,21 @@ export default class App extends Component {
     }
 
     // Set state for alert messages
-    flashMessage = (message, category) => {this.setState({message,category}) }
+    flashMessage = (message, category) => {this.setState({message,category}) };
     // Set state for logging in
-    login = () => {this.setState({loggedIn: true})}
+    login = () => {this.setState({loggedIn: true})};
+    // Remove token and set state to logged out 
+    logout = () => {
+        localStorage.removeItem('token');
+        this.flashMessage("You have logged out, goodbye!", "secondary");
+        this.setState({loggedIn: false});
+    };
 
 
     render() {
         return (
             <> 
-                <Nav loggedIn={this.state.loggedIn} />
+                <Nav loggedIn={this.state.loggedIn} logUserOut={this.logout} />
                 <div className="container">
                     {this.state.message ? <AlertMessage category={this.state.category} message={this.state.message} flashMessage={this.flashMessage}/> : null}
                     <Routes>

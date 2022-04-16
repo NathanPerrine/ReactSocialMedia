@@ -15,11 +15,19 @@ export default function Nav(props) {
                         <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         <Link className="nav-link" to="/allposts">All Posts</Link>
                     </div>
-                    {/* <Link className="nav-link" to="/blog">Blog</Link> */}
+
 
                     <div className="d-flex">
-                        <Link className="nav-link" to="/signup">Sign Up</Link>
-                        <Link className="nav-link" to="/login">Login</Link>
+                        { props.loggedIn ?
+                        <>
+                            <Link className="nav-link" to="/" onClick={props.logUserOut}>Log Out</Link>
+                        </>
+                        : 
+                        <>
+                            <Link className="nav-link" to="/signup">Sign Up</Link>
+                            <Link className="nav-link" to="/login">Login</Link>
+                        </>
+                        }
                     </div>
                 </div>
             </div>
