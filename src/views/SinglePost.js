@@ -74,7 +74,6 @@ export default function SinglePost(props) {
 
     const handleDeleteEvent = (e) => {
         e.preventDefault()
-        console.log("Deleting post...", postId)
         let myHeaders = new Headers();
         let myToken = localStorage.getItem('token');
         myHeaders.append('Authorization', `Bearer ${myToken}`);
@@ -126,11 +125,31 @@ export default function SinglePost(props) {
                                 <textarea name="body" className="form-control" defaultValue={post.content} />
                                 <div className="d-flex justify-content-between align-items-center">
                                     <input type="submit" className="btn btn-primary w-50 mt-2" value="Edit Post" />
-                                    <button className="btn btn-danger w-25 h-50 mt-2" onClick={(e) => handleDeleteEvent(e)} ><i className="fas fa-trash"></i></button>
+                                    {/* <button className="btn btn-danger w-25 h-50 mt-2" onClick={(e) => handleDeleteEvent(e)} ><i className="fas fa-trash"></i></button> */}
+                                    <button className="btn btn-danger w-25 h-50 mt-2" onClick={(e) => e.preventDefault()} data-bs-toggle="modal" data-bs-target="#deleteModal" ><i className="fas fa-trash"></i></button>
                                 </div>
                                 </div>
                             </div>
                         </form>
+
+                        {/* <!-- Modal --> */}
+                        <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h5 className="modal-title" id="deleteModalLabel">Delete {post.title}?</h5>
+                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div className="modal-body">
+                                    Warning: This cannot be undone.
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button className="btn btn-danger " data-bs-dismiss="modal" onClick={(e) => handleDeleteEvent(e)} ><i className="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </> : null}
 
 
