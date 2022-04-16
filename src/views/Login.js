@@ -10,13 +10,13 @@ export default function Login(props) {
         e.preventDefault();
         let username = e.target.username.value
         let password = e.target.password.value
-        
+
         //Login request start
         var myHeaders = new Headers();
         // btoa - buf.toString?
         // myHeaders.append("Authorization", "Basic " + btoa(`${username}:${password}`));
         myHeaders.append("Authorization", "Basic " + Buffer.from(`${username}:${password}`).toString('base64'));
-        
+
         var requestOptions = {
             method: 'POST',
             headers: myHeaders,
@@ -27,7 +27,7 @@ export default function Login(props) {
             .then(res => res.json())
             .then(data => {
                 if (data.error){
-                    props.flashMessage(data.error, "danger")
+                    props.flashMessage("Username and/or password is incorrect.", "danger")
                 } else {
                     let token = data.token
                     localStorage.setItem('token', token);

@@ -21,7 +21,7 @@ export default function SinglePost(props) {
     }, [postId])
 
     useEffect(() => {
-        if (post !== null){
+        if (post !== null && props.loggedIn == true){
                 //Check if the user logged in is the author 
                 let myToken = localStorage.getItem('token')
                 var myHeaders = new Headers();
