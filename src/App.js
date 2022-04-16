@@ -20,18 +20,22 @@ export default class App extends Component {
         }
     }
 
+    // Set state for alert messages
     flashMessage = (message, category) => {this.setState({message,category}) }
+    // Set state for logging in
+    login = () => {this.setState({loggedIn: true})}
+
 
     render() {
         return (
             <> 
-                <Nav />
+                <Nav loggedIn={this.state.loggedIn} />
                 <div className="container">
                     {this.state.message ? <AlertMessage category={this.state.category} message={this.state.message} flashMessage={this.flashMessage}/> : null}
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/allposts" element={<AllPosts base_url={this.state.base_url} />} />
-                        <Route path="/signup" element={<SignUp />} />
+                        <Route path="/signup" element={<SignUp base_url={this.state.base_url} flashMessage={this.flashMessage} />} />
                         <Route path="/login" element={<Login />} />
                     </Routes>
                 </div>
