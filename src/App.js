@@ -46,7 +46,7 @@ export default class App extends Component {
                         <Route path="/signup"               element={<SignUp        base_url={this.state.base_url} flashMessage={this.flashMessage} />} />
                         <Route path="/login"                element={<Login         base_url={this.state.base_url} flashMessage={this.flashMessage} login={this.login} />} />
                         <Route path="/createpost"           element={<CreatePost    base_url={this.state.base_url} flashMessage={this.flashMessage} />} />
-                        <Route path="/singlepost/:postId"   element={<SinglePost    base_url={this.state.base_url} flashmessage={this.flashmessage} />} />
+                        <Route path="/singlepost/:postId"   element={<SinglePost    base_url={this.state.base_url} flashMessage={this.flashMessage} />} />
                     </Routes>
                 </div>
             </>
