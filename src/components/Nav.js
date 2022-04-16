@@ -14,6 +14,11 @@ export default function Nav(props) {
                     <div className="d-flex">
                         <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         <Link className="nav-link" to="/allposts">All Posts</Link>
+                        { props.loggedIn ?
+                        <>
+                            <Link className="nav-link" to="/createpost">Create Post</Link>
+                        </>
+                        : null}
                     </div>
 
 
