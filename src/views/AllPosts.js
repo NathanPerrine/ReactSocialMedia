@@ -23,7 +23,7 @@ export default function AllPosts(props) {
             <h2 className="text-center">All Posts</h2>
 
 
-            {posts.map(p => <PostCard post={p} key={p.id} />)}
+            {posts.map(p => <PostCard post={p} key={p.id} base_url={base_url} />)}
         </>
     )
 }

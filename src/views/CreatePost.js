@@ -49,7 +49,7 @@ export default function CreatePost(props) {
                     <input type="text" name="title" className="form-control" placeholder="Title:" />
                     <label htmlFor="body">Body</label>
                     <input type="text" name="body" className="form-control" placeholder="Body:" />
-                    <input type="submit" className="btn btn-primary w-100" value="Create Post" />
+                    <input type="submit" className="btn btn-primary w-100 mt-2" value="Create Post" />
                 </div>
             </div>
         </form>

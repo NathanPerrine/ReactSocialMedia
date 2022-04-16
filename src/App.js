@@ -7,6 +7,7 @@ import AllPosts from './views/AllPosts'
 import SignUp from './views/SignUp'
 import Login from './views/Login'
 import CreatePost from './views/CreatePost'
+import SinglePost from './views/SinglePost'
 
 export default class App extends Component {
 
@@ -41,10 +42,11 @@ export default class App extends Component {
                     {this.state.message ? <AlertMessage category={this.state.category} message={this.state.message} flashMessage={this.flashMessage}/> : null}
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/allposts"     element={<AllPosts      base_url={this.state.base_url} />} />
-                        <Route path="/signup"       element={<SignUp        base_url={this.state.base_url} flashMessage={this.flashMessage} />} />
-                        <Route path="/login"        element={<Login         base_url={this.state.base_url} flashMessage={this.flashMessage} login={this.login} />} />
-                        <Route path="/createpost"   element={<CreatePost    base_url={this.state.base_url} flashMessage={this.flashMessage} />} />
+                        <Route path="/allposts"             element={<AllPosts      base_url={this.state.base_url} />} />
+                        <Route path="/signup"               element={<SignUp        base_url={this.state.base_url} flashMessage={this.flashMessage} />} />
+                        <Route path="/login"                element={<Login         base_url={this.state.base_url} flashMessage={this.flashMessage} login={this.login} />} />
+                        <Route path="/createpost"           element={<CreatePost    base_url={this.state.base_url} flashMessage={this.flashMessage} />} />
+                        <Route path="/singlepost/:postId"   element={<SinglePost    base_url={this.state.base_url} flashmessage={this.flashmessage} />} />
                     </Routes>
                 </div>
             </>
