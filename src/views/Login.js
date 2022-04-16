@@ -24,16 +24,18 @@ export default function Login(props) {
         };
 
         fetch(`${base_url}/auth/token`, requestOptions)
-            .then(res => res.json())
-            .then(data => {
-                if (data.error){
-                    props.flashMessage("Username and/or password is incorrect.", "danger")
-                } else {
-                    let token = data.token
-                    localStorage.setItem('token', token);
-                    props.flashMessage("You have successfully logged in.", "success")
-                    props.login();
-                    navigate('/')
+            // .then(res => console.log(res.status))
+            .then(res => {
+                if (res.status === 401 ){ props.flashMessage("Username and/or password is incorrect.", "danger")}
+                else {
+                    res.json()
+                    .then(data => {
+                        let token = data.token 
+                        localStorage.setItem('token', token)
+                        props.flashMessage("You have successfully logged in.", "success")
+                        props.login()
+                        navigate('/')
+                    })
                 }
             })
     };
