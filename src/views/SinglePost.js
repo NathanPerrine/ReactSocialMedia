@@ -72,6 +72,31 @@ export default function SinglePost(props) {
             })
     }
 
+    const handleDeleteEvent = (e) => {
+        e.preventDefault()
+        console.log("Deleting post...", postId)
+        let myHeaders = new Headers();
+        let myToken = localStorage.getItem('token');
+        myHeaders.append('Authorization', `Bearer ${myToken}`);
+        myHeaders.append('Content-Type', 'application/json');
+
+        var requestOptions = {
+            method: 'DELETE',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+        
+        fetch(`${base_url}/blog/posts/${postId}`, requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                if (data.error){props.flashMessage(data.error, 'danger')}
+                else {
+                    props.flashMessage("Your post has been deleted", "success")
+                    navigate('/allposts')
+                }
+            })
+    }
+
     return (
         
         <>
@@ -99,7 +124,10 @@ export default function SinglePost(props) {
                                 <input type="text" name="title" className="form-control" defaultValue={post.title} />
                                 <label htmlFor="body">Body</label>
                                 <textarea name="body" className="form-control" defaultValue={post.content} />
-                                <input type="submit" className="btn btn-primary w-100 mt-2" value="Edit Post" />
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <input type="submit" className="btn btn-primary w-50 mt-2" value="Edit Post" />
+                                    <button className="btn btn-danger w-25 h-50 mt-2" onClick={(e) => handleDeleteEvent(e)} ><i className="fas fa-trash"></i></button>
+                                </div>
                                 </div>
                             </div>
                         </form>
