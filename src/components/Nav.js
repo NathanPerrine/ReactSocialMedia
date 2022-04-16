@@ -18,6 +18,7 @@ export default function Nav(props) {
 
 
                     <div className="d-flex">
+                        {/* If user is logged in displays the logout link, else shows sign up/ login */}
                         { props.loggedIn ?
                         <>
                             <Link className="nav-link" to="/" onClick={props.logUserOut}>Log Out</Link>

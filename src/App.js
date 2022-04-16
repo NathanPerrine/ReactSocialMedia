@@ -42,7 +42,7 @@ export default class App extends Component {
                         <Route path="/" element={<Home />} />
                         <Route path="/allposts" element={<AllPosts base_url={this.state.base_url} />} />
                         <Route path="/signup" element={<SignUp base_url={this.state.base_url} flashMessage={this.flashMessage} />} />
-                        <Route path="/login" element={<Login />} />
+                        <Route path="/login" element={<Login base_url={this.state.base_url} flashMessage={this.flashMessage} login={this.login} />} />
                     </Routes>
                 </div>
             </>
