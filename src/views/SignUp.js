@@ -8,7 +8,7 @@ export default function SignUp(props) {
         e.preventDefault();
 
         //Check passwords
-        let password = e.target.password.value ;
+        let password = e.target.password.value;
         let confirmPass = e.target.confirmPass.value;
         if (password !== confirmPass){
             props.flashMessage("Passwords don't match.", "warning");

@@ -11,6 +11,12 @@ export default function SinglePost(props) {
 
     useEffect(() => {
 
+        if (!props.loggedIn){
+            props.flashMessage('You must be logged in to view that page', 'danger')
+            navigate('/login')
+        }
+
+
         fetch(`${base_url}/blog/posts/${postId}`)
             .then(res => res.json())
             .then(data => {
@@ -118,11 +124,11 @@ export default function SinglePost(props) {
                         <form onSubmit={handleEditSubmit} className="col-6">
                             <h3 className="text-center">Create Post</h3>
                             <div className="row justify-content-center">
-                                <div className="form-group w-50">
+                                <div className="form-group">
                                 <label htmlFor="title">Title</label>
                                 <input type="text" name="title" className="form-control" defaultValue={post.title} />
                                 <label htmlFor="body">Body</label>
-                                <textarea name="body" className="form-control" defaultValue={post.content} />
+                                <textarea name="body" className="form-control" rows="10" defaultValue={post.content} />
                                 <div className="d-flex justify-content-between align-items-center">
                                     <input type="submit" className="btn btn-primary w-50 mt-2" value="Edit Post" />
                                     {/* <button className="btn btn-danger w-25 h-50 mt-2" onClick={(e) => handleDeleteEvent(e)} ><i className="fas fa-trash"></i></button> */}
